@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>welcome</title>
+</head>
+<body>
+<title>Customer List</title>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    th,
+    td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+    
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+</head>
+
+<body>
+
+    <!-- Customer List Table -->
+    <div>
+        <h2>Customer List Screen</h2>
+
+        <button onclick="openAddCustomerForm()">Add Customer</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Delete</th>
+                    <th>Update</th>
+                </tr>
+            </thead>
+            <tbody id="customer-table-body">
+                <!-- Sample data for demonstration purposes -->
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>Hno1</td>
+                    <td>Delhi</td>
+                    <td>Delhi</td>
+                    <td>john@gmail.comm</td>
+                    <td>9890949071</td>
+                    <td><button onclick="deleteCustomer(1)">Delete</button></td>
+                    <td><button onclick="updateCustomer(1)">Update</button></td>
+                </tr>
+                <tr>
+                    <td>Jane</td>
+                    <td>Smith</td>
+                    <td>Hno1</td>
+                    <td>Delhi</td>
+                    <td>Delhi</td>
+                    <td>jane@gmail.comm</td>
+                    <td>9890496922</td>
+                    <td><button onclick="deleteCustomer(2)">Delete</button></td>
+                    <td><button onclick="updateCustomer(2)">Update</button></td>
+                </tr>
+                <tr>
+                    <td>liva</td>
+                    <td>shah</td>
+                    <td>Hno1</td>
+                    <td>Delhi</td>
+                    <td>Delhi</td>
+                    <td>liva@gmail.comm</td>
+                    <td>9890833035</td>
+                    <td><button onclick="deleteCustomer(1)">Delete</button></td>
+                    <td><button onclick="updateCustomer(1)">Update</button></td>
+                </tr>
+                <tr>
+                    <td>Tom</td>
+                    <td>cruis</td>
+                    <td>Hno1</td>
+                    <td>Delhi</td>
+                    <td>Delhi</td>
+                    <td>tom@gmail.comm</td>
+                    <td>7383306790</td>
+                    <td><button onclick="deleteCustomer(1)">Delete</button></td>
+                    <td><button onclick="updateCustomer(1)">Update</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            // JavaScript functions for handling Delete and Update operations will be placed here
+            function deleteCustomer(customerId) {
+                console.log(`Deleting customer with ID: ${customerId}`);
+                
+            }
+
+            function updateCustomer(customerId) {
+                
+                console.log(`Updating customer with ID: ${customerId}`);
+                // You can navigate to a new page or display a modal for updating the customer data
+            }
+
+            function openAddCustomerForm() {
+                // Implement the logic to show the form for adding a new customer
+                // You can navigate to a new page or display a modal for adding a customer
+                console.log("Opening Add Customer form...");
+            }
+        </script>
+        <script>
+            // ... (previous functions)
+
+            // Function to populate the customer list table
+            function populateCustomerTable() {
+                const tableBody = document.querySelector("table tbody");
+                tableBody.innerHTML = "";
+
+                customerList.forEach((customer) => {
+                    const row = tableBody.insertRow();
+
+                    const dataKeys = ["first_name", "last_name"];
+                    dataKeys.forEach((key) => {
+                        const cell = row.insertCell();
+                        cell.textContent = customer[key];
+                    });
+
+                    // Add other customer data to the table here if needed
+
+                    const deleteButton = document.createElement("button");
+                    deleteButton.textContent = "Delete";
+                    deleteButton.onclick = () => deleteCustomer(customer.uuid);
+                    row.insertCell().appendChild(deleteButton);
+
+                    const updateButton = document.createElement("button");
+                    updateButton.textContent = "Update";
+                    updateButton.onclick = () => updateCustomerForm(customer.uuid);
+                    row.insertCell().appendChild(updateButton);
+                });
+            }
+
+            // Function to handle API calls and error handling
+            // ... (previous functions)
+
+            // Fetch the customer list and populate the table on page load
+            let customerList = []; // Store customer data here
+            fetchCustomerList();
+        </script>
+    </div>
+
+    </head>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Index</title>
+</head>
+<body>
+	<title>Customer Details</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+            th,
+            td {
+                border: 1px solid #ccc;
+                padding: 10px;
+                text-align: left;
+            }
+            
+            th {
+                width: 100px;
+            }
+            
+            td {
+                width: 200px;
+            }
+        </style>
+        </head>
+		
+        <body>
+            <h2>Customer Details</h2>
+            <table>
+                <tr>
+					<form action="register" method="post">
+						<label for="firstname"><th>First name :</th></label> <br/>
+						<td><input type="text" placeholder="fname"></td>
+						
+					    <label for="lastname"><th>Last name :</th></label> <br/>
+                        <td><input type="text" placeholder="lname"></td>
+                </tr>
+                <tr>
+                    <label for="email"><th>Email</th></label> <br/>
+                        <td><input type="email" placeholder="email"></td>
+					<label for="dob"><th>DoB :</th></label> <br/>
+						<td><input type="date" placeholder="dob"/> <br/>
+                
+                </tr>
+                <tr>
+					
+                    <label for="password"><th>Password :</th></label> <br/>
+						<td><input type="password" placeholder="passwd"/> </td><br/>
+					<label for="gender"><th>Gender :</th></label> <br/>
+						<td><select name="gender">
+								<option value=""></option>
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+						</select></td><br/>
+                </tr>
+				<tr>
+					<label for="city"><th>City:</th></label> <br/>
+						<td><input type="text" placeholder="city"></td>
+						
+					    <label for="address"><th>Address :</th></label> <br/>
+                        <td><input type="text" placeholder="address"></td>
+                    
+                </tr>
+
+            </table>
+            <button type="button" onclick="addCustomer()">Submit</button>
+
+
+        </body>
+
+
+        <script>
+            function addCustomer() {
+                const name = document.getElementById("fname").value;
+                const city = document.getElementById("city").value;
+                const address = document.getElementById("address").value;
+
+                //  logic Implement  to add the customer with the given data
+                console.log("Adding customer details...");
+                console.log(`Name: ${fname}`);
+                console.log(`City: ${city}`);
+                console.log(`Address: ${address}`);
+
+                
+            }
+        </script>
+
+</body>
+</html>
